@@ -43,7 +43,7 @@ Android Studio, na linguagem Java.
 <a href="https://github.com/deyvisonogueira">
  <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/84421730?v=4" width="100px;" alt=""/>
  <br />
- <sub><b>Felipe Menezes Sacramento</b></sub></a> <a href="https://github.com/Felipe-exec" title="GitHub perfil">🎮</a>
+ <sub><b>Deyvison Nogueira</b></sub></a> <a href="https://github.com/deyvisonogueira" title="GitHub perfil">🎮</a>
  
  <br />
  <br />
