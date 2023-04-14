@@ -56,8 +56,8 @@ Android Studio, na linguagem Java.
  
  ---
 
-## 📝 Licença
+## 📝 Feito por:
 
-Criado por Deyvison Nogueira 👋🏽
+©️ Deyvison Nogueira 👋🏽
 
 ---
