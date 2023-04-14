@@ -35,6 +35,7 @@ OBS: foi alterado cores no layout da calculadora.
 ## 🚀 Como executar o projeto
 
 Necessário abrir o projeto no Android Studio.
+https://files.fm/f/45ztxug8n
 
 ## 🛠 Tecnologias
 
