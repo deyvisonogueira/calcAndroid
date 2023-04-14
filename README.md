@@ -41,7 +41,7 @@ Android Studio, na linguagem Java.
 ## 🦸 Autor
 
 <a href="https://github.com/deyvisonogueira">
- <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/84421730?v=4" width="100px;" alt=""/>
+ <img style="border-radius: 50%;" src="https://lh3.googleusercontent.com/7zSRB0P69XjQghtkEWsbRMXDIaKNJj7iPyfgCQFToQykQSJ_d6ExlQkfc-wzXuLaHsNTgQI6GihszifH9BroEmcIIfBuxXhpQBBg_V50" width="100px;" alt=""/>
  <br />
  <sub><b>Deyvison Nogueira</b></sub></a> <a href="https://github.com/deyvisonogueira" title="GitHub perfil">🎮</a>
  
