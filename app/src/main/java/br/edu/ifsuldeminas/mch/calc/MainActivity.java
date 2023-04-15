@@ -187,13 +187,19 @@ public class MainActivity extends AppCompatActivity {
                         return;
                     } else if (ultimoCaractere == '-' || ultimoCaractere == '*' || ultimoCaractere == '/') {
                         // Se o último caractere for um sinal diferente de soma, substitui pelo sinal de soma
-                        expressao = expressao.substring(0, expressao.length() - 1) + " ";
+                        expressao = expressao.substring(0, expressao.length() - 1) + "+";
+                    }
+                    if (expressao.isEmpty()) {
+                        Toast.makeText(getApplicationContext(), "A expressão não pode começar com um sinal de soma.", Toast.LENGTH_SHORT).show();
+                        return;
                     }
                 }
                 else {
                     // Se a expressão estiver vazia, não adiciona o sinal de soma
                     return;
                 }
+
+
 
                 // Adiciona o sinal de soma à expressão
                 expressao += "+";
@@ -209,15 +215,15 @@ public class MainActivity extends AppCompatActivity {
                 if (expressao.length() > 0) {
                     char ultimoCaractere = expressao.charAt(expressao.length() - 1);
                     if (ultimoCaractere == '-') {
-                        // Se o último caractere já for uma soma, não adiciona novamente
+
                         return;
                     } else if (ultimoCaractere == '+' || ultimoCaractere == '*' || ultimoCaractere == '/') {
-                        // Se o último caractere for um sinal diferente de soma, substitui pelo sinal de soma
-                        expressao = expressao.substring(0, expressao.length() - 1) + " ";
+
+                        expressao = expressao.substring(0, expressao.length() - 1) + "";
                     }
                 }
                 else {
-                    // Se a expressão estiver vazia, não adiciona o sinal de soma
+
                     return;
                 }
 
@@ -234,15 +240,15 @@ public class MainActivity extends AppCompatActivity {
                 if (expressao.length() > 0) {
                     char ultimoCaractere = expressao.charAt(expressao.length() - 1);
                     if (ultimoCaractere == '*') {
-                        // Se o último caractere já for uma soma, não adiciona novamente
+
                         return;
                     } else if (ultimoCaractere == '-' || ultimoCaractere == '+' || ultimoCaractere == '/') {
-                        // Se o último caractere for um sinal diferente de soma, substitui pelo sinal de soma
+
                         expressao = expressao.substring(0, expressao.length() - 1) + "";
                     }
                 }
                 else {
-                    // Se a expressão estiver vazia, não adiciona o sinal de soma
+
                     return;
                 }
 
@@ -259,10 +265,10 @@ public class MainActivity extends AppCompatActivity {
                 if (expressao.length() > 0) {
                     char ultimoCaractere = expressao.charAt(expressao.length() - 1);
                     if (ultimoCaractere == '/') {
-                        // Se o último caractere já for uma soma, não adiciona novamente
+
                         return;
                     } else if (ultimoCaractere == '-' || ultimoCaractere == '*' || ultimoCaractere == '+') {
-                        // Se o último caractere for um sinal diferente de soma, substitui pelo sinal de soma
+
                         expressao = expressao.substring(0, expressao.length() - 1) + "";
                     }
                 }
