@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import de.congrace.exp4j.Calculable;
 import de.congrace.exp4j.ExpressionBuilder;
@@ -17,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "ifsuldeminas.mch.calc";
     private Button buttonEquals, buttonC, buttonD, buttonZero, buttonOne, buttonTwo, buttonThree, buttonFour,
-            buttonFive, buttonSix, buttonSeven, buttonEight, buttonNine, buttonPlus, buttonMinus, buttonMultiply, buttonDivide;
+            buttonFive, buttonSix, buttonSeven, buttonEight, buttonNine, buttonPlus, buttonMinus, buttonMultiply, buttonDivide, buttonComma;
     private TextView textViewResultado, textViewUltimaExpressao;
     private String expressao = "";
 
@@ -26,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        getSupportActionBar().hide();
+        //getSupportActionBar().hide();
 
         textViewResultado = findViewById(R.id.textViewResultadoID);
         textViewUltimaExpressao = findViewById(R.id.textViewUltimaExpressaoID);
@@ -48,14 +49,17 @@ public class MainActivity extends AppCompatActivity {
         buttonMinus = findViewById(R.id.buttonSubtracaoID);
         buttonMultiply = findViewById(R.id.buttonMultiplicacaoID);
         buttonDivide = findViewById(R.id.buttonDivisaoID);
+        buttonComma = findViewById(R.id.buttonVirgulaID);
 
         buttonD.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                System.out.println(expressao);
-                expressao = expressao.substring(0,expressao.length()-1);
-                textViewUltimaExpressao.setText(expressao);
-                textViewResultado.setText("");
+                if (expressao.length() > 0) { // Verifica se a expressão não está vazia
+                    System.out.println(expressao);
+                    expressao = expressao.substring(0, expressao.length()-1);
+                    textViewUltimaExpressao.setText(expressao);
+                    textViewResultado.setText("");
+                }
             }
         });
 
@@ -147,55 +151,160 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        buttonComma.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (expressao.length() > 0) {
+                    char ultimoCaractere = expressao.charAt(expressao.length() - 1);
+                    if (ultimoCaractere == '.') {
+                        // Se o último caractere já for um ponto, não adiciona novamente
+                        return;
+                    } else if (ultimoCaractere == '-' || ultimoCaractere == '*' || ultimoCaractere == '/' || ultimoCaractere == '+') {
+
+                        expressao = expressao.substring(0, expressao.length() - 1) + "";
+                    }
+                }
+                else {
+                    // Se a expressão estiver vazia, não adiciona o sinal de ponto
+                    return;
+                }
+
+                // Adiciona o sinal de ponto à expressão
+                expressao += ".";
+                textViewUltimaExpressao.setText(expressao);
+                textViewResultado.setText("");
+            }
+        });
+
+
         buttonPlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (expressao.length() > 0) {
+                    char ultimoCaractere = expressao.charAt(expressao.length() - 1);
+                    if (ultimoCaractere == '+') {
+                        // Se o último caractere já for uma soma, não adiciona novamente
+                        return;
+                    } else if (ultimoCaractere == '-' || ultimoCaractere == '*' || ultimoCaractere == '/') {
+                        // Se o último caractere for um sinal diferente de soma, substitui pelo sinal de soma
+                        expressao = expressao.substring(0, expressao.length() - 1) + " ";
+                    }
+                }
+                else {
+                    // Se a expressão estiver vazia, não adiciona o sinal de soma
+                    return;
+                }
+
+                // Adiciona o sinal de soma à expressão
                 expressao += "+";
                 textViewUltimaExpressao.setText(expressao);
+                textViewResultado.setText("");
             }
         });
+
 
         buttonMinus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (expressao.length() > 0) {
+                    char ultimoCaractere = expressao.charAt(expressao.length() - 1);
+                    if (ultimoCaractere == '-') {
+                        // Se o último caractere já for uma soma, não adiciona novamente
+                        return;
+                    } else if (ultimoCaractere == '+' || ultimoCaractere == '*' || ultimoCaractere == '/') {
+                        // Se o último caractere for um sinal diferente de soma, substitui pelo sinal de soma
+                        expressao = expressao.substring(0, expressao.length() - 1) + " ";
+                    }
+                }
+                else {
+                    // Se a expressão estiver vazia, não adiciona o sinal de soma
+                    return;
+                }
+
+                // Adiciona o sinal de soma à expressão
                 expressao += "-";
                 textViewUltimaExpressao.setText(expressao);
+                textViewResultado.setText("");
             }
         });
 
         buttonMultiply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (expressao.length() > 0) {
+                    char ultimoCaractere = expressao.charAt(expressao.length() - 1);
+                    if (ultimoCaractere == '*') {
+                        // Se o último caractere já for uma soma, não adiciona novamente
+                        return;
+                    } else if (ultimoCaractere == '-' || ultimoCaractere == '+' || ultimoCaractere == '/') {
+                        // Se o último caractere for um sinal diferente de soma, substitui pelo sinal de soma
+                        expressao = expressao.substring(0, expressao.length() - 1) + "";
+                    }
+                }
+                else {
+                    // Se a expressão estiver vazia, não adiciona o sinal de soma
+                    return;
+                }
+
+                // Adiciona o sinal de soma à expressão
                 expressao += "*";
                 textViewUltimaExpressao.setText(expressao);
+                textViewResultado.setText("");
             }
         });
 
         buttonDivide.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (expressao.length() > 0) {
+                    char ultimoCaractere = expressao.charAt(expressao.length() - 1);
+                    if (ultimoCaractere == '/') {
+                        // Se o último caractere já for uma soma, não adiciona novamente
+                        return;
+                    } else if (ultimoCaractere == '-' || ultimoCaractere == '*' || ultimoCaractere == '+') {
+                        // Se o último caractere for um sinal diferente de soma, substitui pelo sinal de soma
+                        expressao = expressao.substring(0, expressao.length() - 1) + "";
+                    }
+                }
+                else {
+                    // Se a expressão estiver vazia, não adiciona o sinal de soma
+                    return;
+                }
+
+                // Adiciona o sinal de soma à expressão
                 expressao += "/";
                 textViewUltimaExpressao.setText(expressao);
+                textViewResultado.setText("");
             }
         });
+
+
 
         buttonEquals.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Calculable checandoExpressao = null;
-                try {
-                    checandoExpressao = new ExpressionBuilder(expressao).build();
+                // Verifica se a expressão não termina com um sinal matemático
+                if (expressao.matches(".*[+\\-*/]$")) {
+                    Toast.makeText(MainActivity.this, "A expressão não pode terminar com um sinal matemático", Toast.LENGTH_SHORT).show();
+                } else {
+                    try {
+                        Calculable checandoExpressao = new ExpressionBuilder(expressao).build();
 
-                    Double resultado = checandoExpressao.calculate();
+                        Double resultado = checandoExpressao.calculate();
 
-                    textViewResultado.setText(resultado.toString());
-                } catch (Exception e) {
-                    Log.d(TAG, e.getMessage());
+                        textViewResultado.setText(resultado.toString());
+                        textViewUltimaExpressao.setText(expressao);
+
+                        // Limpa a expressão e adiciona o resultado como nova expressão
+                        expressao = resultado.toString();
+                    } catch (Exception e) {
+                        Log.d(TAG, e.getMessage());
+                    }
                 }
+
             }
         });
+
     }
 }
-
-
 
