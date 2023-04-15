@@ -161,7 +161,7 @@ public class MainActivity extends AppCompatActivity {
                         return;
                     } else if (ultimoCaractere == '-' || ultimoCaractere == '*' || ultimoCaractere == '/' || ultimoCaractere == '+') {
 
-                        expressao = expressao.substring(0, expressao.length() - 1) + "";
+                        expressao = expressao.substring(0, expressao.length() - 1) + "+";
                     }
                 }
                 else {
@@ -187,7 +187,7 @@ public class MainActivity extends AppCompatActivity {
                         return;
                     } else if (ultimoCaractere == '-' || ultimoCaractere == '*' || ultimoCaractere == '/') {
                         // Se o último caractere for um sinal diferente de soma, substitui pelo sinal de soma
-                        expressao = expressao.substring(0, expressao.length() - 1) + "+";
+                        expressao = expressao.substring(0, expressao.length() - 1) + "";
                     }
                     if (expressao.isEmpty()) {
                         Toast.makeText(getApplicationContext(), "A expressão não pode começar com um sinal de soma.", Toast.LENGTH_SHORT).show();
